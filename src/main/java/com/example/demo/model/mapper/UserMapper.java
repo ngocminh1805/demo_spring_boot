@@ -11,6 +11,7 @@ public class UserMapper {
         tmp.setEmail(user.getEmail());
         tmp.setAvatar(user.getAvatar());
         tmp.setPhone(user.getPhone());
+        tmp.setCars(CarMapper.toCarDto(user.getCars()));
 
         return tmp;
     }

@@ -1,14 +1,19 @@
 package com.example.demo.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
-
-// @Component
 @Entity
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,16 +24,20 @@ public class User {
     private String avatar;
     private String password;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Car> cars;
+
     public User() {
     }
 
-    public User(int id, String name, String email, String phone, String avatar, String password) {
+    public User(int id, String name, String email, String phone, String avatar, String password, List<Car> cars) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.avatar = avatar;
         this.password = password;
+        this.cars = cars;
     }
 
     public int getId() {
@@ -77,6 +86,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", email='" + getEmail() + "'"
+                + ", phone='" + getPhone() + "'" + ", avatar='" + getAvatar() + "'" + ", password='" + getPassword()
+                + "'" + ", cars='" + getCars() + "'" + "}";
     }
 
 }
