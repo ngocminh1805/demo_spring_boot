@@ -24,7 +24,7 @@ public class UserController {
     private UserService userservice;
 
     @GetMapping("")
-    public ResponseEntity<?> getlistUser(@RequestParam int page, int limit) {
+    public ResponseEntity<?> getlistUser(@RequestParam int page, @RequestParam int limit) {
         List<UserDto> users = userservice.getListUser(page, limit);
         // List<User> list = (List<User>) repo.findAll();
         System.out.println("Find All : ");
