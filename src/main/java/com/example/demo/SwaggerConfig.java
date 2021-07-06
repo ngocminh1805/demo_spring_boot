@@ -26,8 +26,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("JavaInUse API").description("JavaInUse API reference for developers")
-                .termsOfServiceUrl("localhost:8080").license("JavaInUse License")
-                .licenseUrl("jngocminhmtp123@gmail.com").version("1.0").build();
+                .termsOfServiceUrl("localhost:8080").license("JavaInUse License").licenseUrl("ngocminhmtp123@gmail.com")
+                .version("1.0").build();
     }
 
 }
